@@ -13,6 +13,14 @@ app.use((req, res, next) =>{
 })
 
 
-server.listen(process.env.PORT || 3000)
+app.get('/', (req, res) => {
+	res.send('hello from node');
+});
+
+app.set('port', process.env.PORT || 8000);
+
+app.listen(app.get('port'), () => {
+	console.log(`✅ PORT: ${app.get('port')} `);
+});
 
 module.exports = app;
